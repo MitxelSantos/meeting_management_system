@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Sistema de Gestión de Reuniones - Secretaría de Salud Tolima</title>
+    
+    <!-- CSS Files -->
+    <link rel="stylesheet" href="css/main.css">
+    <link rel="stylesheet" href="css/components.css">
+    <link rel="stylesheet" href="css/responsive.css">
+    <link rel="stylesheet" href="css/themes.css">
+    
+    <!-- External Libraries -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css" rel="stylesheet">
+    
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="assets/icons/favicon.ico">
+</head>
+<body>
+    <!-- Login Screen -->
+    <div id="loginScreen" class="login-screen">
+        <div class="login-container">
+            <div class="login-header">
+                <img src="assets/images/logo-tolima.png" alt="Logo Gobernación del Tolima" class="login-logo">
+                <h1>Secretaría de Salud del Tolima</h1>
+                <p>Sistema de Gestión de Reuniones</p>
+            </div>
+            
+            <form id="loginForm" class="login-form">
+                <div class="form-group">
+                    <label for="loginEmail">Correo Electrónico Institucional</label>
+                    <input type="email" id="loginEmail" required placeholder="usuario@saludtolima.gov.co">
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginPassword">Contraseña</label>
+                    <input type="password" id="loginPassword" required>
+                </div>
+                
+                <div class="form-group">
+                    <label for="loginArea">Área/Dirección</label>
+                    <select id="loginArea" required>
+                        <option value="">Seleccionar área</option>
+                        <option value="despacho">Despacho del Secretario</option>
+                        <option value="direccion-administrativa">Dirección Administrativa y Financiera</option>
+                        <option value="direccion-salud-publica">Dirección de Salud Pública</option>
+                        <option value="direccion-aseguramiento">Dirección de Aseguramiento</option>
+                        <option value="direccion-prestacion">Dirección de Prestación de Servicios</option>
+                        <option value="direccion-juridica">Dirección Jurídica</option>
+                        <option value="sistemas">Sistemas e Informática</option>
+                    </select>
+                </div>
+                
+                <button type="submit" class="btn btn-primary">
+                    <i class="fas fa-sign-in-alt"></i> Iniciar Sesión
+                </button>
+                
+                <div class="login-help">
+                    <a href="#" id="forgotPassword">¿Olvidó su contraseña?</a>
+                </div>
+            </form>
+            
+            <div id="loginAlert" class="alert" style="display: none;">
+                <span id="loginMessage"></span>
+            </div>
+        </div>
+    </div>
+
+    <!-- Main Application -->
+    <div id="mainApp" class="main-app" style="display: none;">
+        <!-- Header -->
+        <header class="header">
+            <div class="header-content">
+                <div class="logo-section">
+                    <img src="assets/images/logo-tolima.png" alt="Logo Gobernación del Tolima" class="logo">
+                    <div class="institution-info">
+                        <h1>Secretaría de Salud del Tolima</h1>
+                        <p>Sistema de Gestión de Reuniones</p>
+                    </div>
+                </div>
+                
+                <div class="user-info">
+                    <div class="user-details">
+                        <span class="user-name" id="userName">Usuario</span>
+                        <span class="user-area" id="userArea">Área</span>
+                    </div>
+                    <div class="user-actions">
+                        <button class="btn btn-outline btn-sm" id="notificationBtn">
+                            <i class="fas fa-bell"></i>
+                            <span class="notification-badge" id="notificationBadge">0</span>
+                        </button>
+                        <button class="btn btn-outline btn-sm" id="logoutBtn">
+                            <i class="fas fa-sign-out-alt"></i> Salir
+                        </button>
+                    </div>
+                </div>
+                
+                <nav class="nav-menu" id="navigationMenu">
+                    <!-- Navigation will be injected here by Navigation component -->
+                </nav>
+            </div>
+        </header>
+
+        <!-- Main Content -->
+        <main class="main-content" id="mainContent">
+            <!-- Content sections will be injected here by components -->
+        </main>
+    </div>
+
+    <!-- Meeting Preview Modal -->
+    <div id="previewModal" class="modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h3><i class="fas fa-eye"></i> Vista Previa - Invitación a Reunión</h3>
+                <button class="modal-close" id="closePreview">
+                    <i class="fas fa-times"></i>
+                </button>
+            </div>
+            <div class="modal-body">
+                <div id="previewContent" class="preview-content"></div>
+            </div>
+            <div class="modal-footer">
+                <button class="btn btn-secondary" id="editMeeting">
+                    <i class="fas fa-edit"></i> Editar
+                </button>
+                <button class="btn btn-primary" id="confirmSend">
+                    <i class="fas fa-paper-plane"></i> Confirmar y Enviar
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Loading Spinner -->
+    <div id="loadingSpinner" class="loading-spinner" style="display: none;">
+        <div class="spinner"></div>
+        <p>Procesando...</p>
+    </div>
+
+    <!-- JavaScript Files -->
+    <!-- Core Dependencies -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chart.js/4.4.1/chart.min.js"></script>
+    
+    <!-- Configuration -->
+    <script type="module" src="../src/config/app.config.js"></script>
+    
+    <!-- Utilities -->
+    <script type="module" src="../src/utils/constants.js"></script>
+    <script type="module" src="../src/utils/helpers.js"></script>
+    <script type="module" src="../src/utils/validators.js"></script>
+    <script type="module" src="../src/utils/dateUtils.js"></script>
+    
+    <!-- Models -->
+    <script type="module" src="../src/models/User.js"></script>
+    <script type="module" src="../src/models/Meeting.js"></script>
+    <script type="module" src="../src/models/AuditLog.js"></script>
+    
+    <!-- Services -->
+    <script type="module" src="../src/services/AuthService.js"></script>
+    <script type="module" src="../src/services/MeetingService.js"></script>
+    <script type="module" src="../src/services/OutlookService.js"></script>
+    <script type="module" src="../src/services/DatabaseService.js"></script>
+    <script type="module" src="../src/services/NotificationService.js"></script>
+    
+    <!-- Components -->
+    <script type="module" src="../src/components/Navigation.js"></script>
+    <script type="module" src="../src/components/Dashboard.js"></script>
+    <script type="module" src="../src/components/MeetingForm.js"></script>
+    <script type="module" src="../src/components/Calendar.js"></script>
+    <script type="module" src="../src/components/Reports.js"></script>
+    <script type="module" src="../src/components/AuditLog.js"></script>
+    
+    <!-- Main Application -->
+    <script type="module" src="js/app.js"></script>
+</body>
+</html>
