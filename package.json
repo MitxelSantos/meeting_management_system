@@ -1,80 +1,306 @@
 {
-  "name": "meeting-management-system",
-  "version": "1.0.0",
-  "description": "Sistema de Gestión de Reuniones - Secretaría de Salud del Tolima",
-  "main": "public/index.html",
-  "scripts": {
-    "start": "node scripts/dev-server.js",
-    "dev": "live-server public --port=3000 --open=/",
-    "build": "node scripts/build.js",
-    "test": "jest",
-    "test:watch": "jest --watch",
-    "test:coverage": "jest --coverage",
-    "lint": "eslint src/ public/js/ --ext .js",
-    "lint:fix": "eslint src/ public/js/ --ext .js --fix",
-    "format": "prettier --write \"src/**/*.js\" \"public/**/*.js\"",
-    "deploy": "node scripts/deploy.js"
-  },
-  "keywords": [
-    "meetings",
-    "management",
-    "government",
-    "colombia",
-    "tolima",
-    "health"
-  ],
-  "author": "Secretaría de Salud del Tolima",
-  "license": "MIT",
-  "devDependencies": {
-    "eslint": "^8.57.0",
-    "prettier": "^3.2.5",
-    "jest": "^29.7.0",
-    "live-server": "^1.2.2",
-    "@babel/core": "^7.24.0",
-    "@babel/preset-env": "^7.24.0",
-    "babel-jest": "^29.7.0"
-  },
-  "dependencies": {
-    "chart.js": "^4.4.1",
-    "date-fns": "^3.3.1"
-  },
-  "jest": {
-    "testEnvironment": "jsdom",
-    "setupFilesAfterEnv": ["<rootDir>/tests/setup.js"],
-    "collectCoverageFrom": [
-      "src/**/*.js",
-      "public/js/**/*.js",
-      "!src/**/*.test.js"
+    "name": "meeting-management-system",
+    "version": "1.0.0",
+    "description": "Sistema de Gestión de Reuniones - Secretaría de Salud del Tolima",
+    "main": "public/index.html",
+    "type": "module",
+    "scripts": {
+        "start": "npm run dev",
+        "dev": "live-server public --port=3000 --open=/ --cors --wait=200",
+        "dev:https": "live-server public --port=3000 --https=./certs --open=/",
+        "build": "node scripts/build.js",
+        "build:prod": "NODE_ENV=production node scripts/build.js",
+        "test": "jest",
+        "test:watch": "jest --watch",
+        "test:coverage": "jest --coverage",
+        "test:e2e": "playwright test",
+        "lint": "eslint src/ public/js/ --ext .js",
+        "lint:fix": "eslint src/ public/js/ --ext .js --fix",
+        "format": "prettier --write \"src/**/*.js\" \"public/**/*.js\" \"*.json\" \"*.md\"",
+        "format:check": "prettier --check \"src/**/*.js\" \"public/**/*.js\" \"*.json\" \"*.md\"",
+        "validate": "npm run lint && npm run format:check && npm run test",
+        "deploy": "npm run build:prod && node scripts/deploy.js",
+        "serve": "http-server public -p 3000 -c-1",
+        "clean": "rimraf dist/ coverage/ .nyc_output/",
+        "setup": "node scripts/setup.js",
+        "postinstall": "npm run setup"
+    },
+    "keywords": [
+        "meetings",
+        "management",
+        "government",
+        "colombia",
+        "tolima",
+        "health",
+        "secretary",
+        "scheduler",
+        "calendar",
+        "outlook"
     ],
-    "coverageDirectory": "coverage",
-    "coverageReporters": ["text", "lcov", "html"]
-  },
-  "babel": {
-    "presets": ["@babel/preset-env"]
-  },
-  "eslintConfig": {
-    "env": {
-      "browser": true,
-      "es2021": true,
-      "jest": true
+    "author": {
+        "name": "Secretaría de Salud del Tolima",
+        "email": "sistemas@saludtolima.gov.co",
+        "url": "https://saludtolima.gov.co"
     },
-    "extends": ["eslint:recommended"],
-    "parserOptions": {
-      "ecmaVersion": "latest",
-      "sourceType": "module"
+    "license": "MIT",
+    "repository": {
+        "type": "git",
+        "url": "https://github.com/saludtolima/meeting-management-system.git"
     },
-    "rules": {
-      "no-unused-vars": "warn",
-      "no-console": "warn",
-      "prefer-const": "error",
-      "no-var": "error"
-    }
-  },
-  "prettier": {
-    "semi": true,
-    "trailingComma": "es5",
-    "singleQuote": true,
-    "printWidth": 80,
-    "tabWidth": 2
-  }
+    "bugs": {
+        "url": "https://github.com/saludtolima/meeting-management-system/issues"
+    },
+    "homepage": "https://reuniones.saludtolima.gov.co",
+    "engines": {
+        "node": ">=16.0.0",
+        "npm": ">=8.0.0"
+    },
+    "browserslist": [
+        "> 1%",
+        "last 2 versions",
+        "not dead",
+        "not ie 11"
+    ],
+    "devDependencies": {
+        "@babel/core": "^7.24.4",
+        "@babel/preset-env": "^7.24.4",
+        "@playwright/test": "^1.42.1",
+        "@types/jest": "^29.5.12",
+        "babel-jest": "^29.7.0",
+        "cross-env": "^7.0.3",
+        "eslint": "^8.57.0",
+        "eslint-config-prettier": "^9.1.0",
+        "eslint-plugin-jest": "^27.9.0",
+        "html-validate": "^8.18.1",
+        "http-server": "^14.1.1",
+        "husky": "^9.0.11",
+        "jest": "^29.7.0",
+        "jest-environment-jsdom": "^29.7.0",
+        "lint-staged": "^15.2.2",
+        "live-server": "^1.2.2",
+        "nodemon": "^3.1.0",
+        "prettier": "^3.2.5",
+        "rimraf": "^5.0.5",
+        "terser": "^5.30.0"
+    },
+    "dependencies": {
+        "chart.js": "^4.4.2",
+        "date-fns": "^3.6.0",
+        "js-yaml": "^4.1.0",
+        "lodash-es": "^4.17.21",
+        "sortablejs": "^1.15.2"
+    },
+    "optionalDependencies": {
+        "@microsoft/microsoft-graph-client": "^3.0.7",
+        "msal": "^1.4.18"
+    },
+    "jest": {
+        "testEnvironment": "jsdom",
+        "setupFilesAfterEnv": [
+            "<rootDir>/tests/setup.js"
+        ],
+        "collectCoverageFrom": [
+            "src/**/*.js",
+            "public/js/**/*.js",
+            "!src/**/*.test.js",
+            "!src/**/*.spec.js",
+            "!**/node_modules/**",
+            "!**/vendor/**"
+        ],
+        "coverageDirectory": "coverage",
+        "coverageReporters": [
+            "text",
+            "lcov",
+            "html",
+            "json-summary"
+        ],
+        "coverageThreshold": {
+            "global": {
+                "branches": 70,
+                "functions": 70,
+                "lines": 70,
+                "statements": 70
+            }
+        },
+        "testMatch": [
+            "<rootDir>/tests/**/*.test.js",
+            "<rootDir>/src/**/*.test.js"
+        ],
+        "moduleNameMapping": {
+            "^@/(.*)$": "<rootDir>/src/$1",
+            "^@public/(.*)$": "<rootDir>/public/$1"
+        },
+        "transform": {
+            "^.+\\.js$": "babel-jest"
+        },
+        "testTimeout": 10000
+    },
+    "babel": {
+        "presets": [
+            [
+                "@babel/preset-env",
+                {
+                    "targets": {
+                        "node": "current"
+                    }
+                }
+            ]
+        ]
+    },
+    "eslintConfig": {
+        "env": {
+            "browser": true,
+            "es2022": true,
+            "jest": true,
+            "node": true
+        },
+        "extends": [
+            "eslint:recommended",
+            "prettier"
+        ],
+        "parserOptions": {
+            "ecmaVersion": "latest",
+            "sourceType": "module"
+        },
+        "rules": {
+            "no-unused-vars": [
+                "warn",
+                {
+                    "argsIgnorePattern": "^_"
+                }
+            ],
+            "no-console": [
+                "warn",
+                {
+                    "allow": [
+                        "warn",
+                        "error"
+                    ]
+                }
+            ],
+            "prefer-const": "error",
+            "no-var": "error",
+            "no-duplicate-imports": "error",
+            "no-unused-expressions": "error",
+            "eqeqeq": [
+                "error",
+                "always"
+            ],
+            "curly": [
+                "error",
+                "all"
+            ],
+            "brace-style": [
+                "error",
+                "1tbs"
+            ],
+            "indent": [
+                "error",
+                2,
+                {
+                    "SwitchCase": 1
+                }
+            ],
+            "quotes": [
+                "error",
+                "single",
+                {
+                    "avoidEscape": true
+                }
+            ],
+            "semi": [
+                "error",
+                "always"
+            ],
+            "comma-dangle": [
+                "error",
+                "never"
+            ]
+        },
+        "globals": {
+            "Chart": "readonly",
+            "app": "writable",
+            "dashboard": "writable"
+        },
+        "ignorePatterns": [
+            "dist/",
+            "coverage/",
+            "node_modules/",
+            "public/lib/"
+        ]
+    },
+    "prettier": {
+        "semi": true,
+        "trailingComma": "none",
+        "singleQuote": true,
+        "printWidth": 100,
+        "tabWidth": 2,
+        "useTabs": false,
+        "bracketSpacing": true,
+        "arrowParens": "avoid",
+        "endOfLine": "lf",
+        "overrides": [
+            {
+                "files": "*.json",
+                "options": {
+                    "parser": "json"
+                }
+            },
+            {
+                "files": "*.md",
+                "options": {
+                    "parser": "markdown",
+                    "proseWrap": "always"
+                }
+            }
+        ]
+    },
+    "lint-staged": {
+        "*.js": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{json,md,yml,yaml}": [
+            "prettier --write"
+        ]
+    },
+    "husky": {
+        "hooks": {
+            "pre-commit": "lint-staged",
+            "pre-push": "npm run validate"
+        }
+    },
+    "config": {
+        "commitizen": {
+            "path": "cz-conventional-changelog"
+        }
+    },
+    "directories": {
+        "test": "tests",
+        "doc": "docs"
+    },
+    "files": [
+        "public/",
+        "src/",
+        "scripts/",
+        "docs/",
+        "LICENSE",
+        "README.md"
+    ],
+    "publishConfig": {
+        "access": "restricted"
+    },
+    "funding": {
+        "type": "government",
+        "url": "https://saludtolima.gov.co"
+    },
+    "os": [
+        "win32",
+        "darwin",
+        "linux"
+    ],
+    "cpu": [
+        "x64",
+        "arm64"
+    ]
 }

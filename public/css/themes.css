@@ -1,0 +1,474 @@
+/**
+ * Temas y variaciones del Sistema de Gestión de Reuniones
+ * @author Secretaría de Salud del Tolima
+ * @version 1.0.0
+ */
+
+/* ==================== TEMA POR DEFECTO (CLARO) ==================== */
+:root {
+    /* Colores institucionales */
+    --tolima-blue: #2c5282;
+    --tolima-green: #38a169;
+    --tolima-gold: #d69e2e;
+
+    /* Gradientes institucionales */
+    --gradient-primary: linear-gradient(135deg, var(--tolima-blue) 0%, #4a90c2 100%);
+    --gradient-secondary: linear-gradient(135deg, var(--tolima-green) 0%, #48bb78 100%);
+    --gradient-accent: linear-gradient(135deg, var(--tolima-gold) 0%, #f6ad55 100%);
+}
+
+/* ==================== TEMA OSCURO ==================== */
+[data-theme="dark"] {
+    /* Colores de fondo */
+    --bg-primary: #1a202c;
+    --bg-secondary: #2d3748;
+    --bg-tertiary: #4a5568;
+    --bg-dark: #718096;
+
+    /* Colores de texto */
+    --text-primary: #f7fafc;
+    --text-secondary: #e2e8f0;
+    --text-muted: #a0aec0;
+    --text-light: #718096;
+    --text-white: #ffffff;
+
+    /* Colores de borde */
+    --border-color: #4a5568;
+    --border-dark: #2d3748;
+
+    /* Ajustar sombras para tema oscuro */
+    --shadow-sm: 0 1px 2px 0 rgba(0, 0, 0, 0.3);
+    --shadow-md: 0 4px 6px -1px rgba(0, 0, 0, 0.4), 0 2px 4px -1px rgba(0, 0, 0, 0.3);
+    --shadow-lg: 0 10px 15px -3px rgba(0, 0, 0, 0.4), 0 4px 6px -2px rgba(0, 0, 0, 0.3);
+    --shadow-xl: 0 20px 25px -5px rgba(0, 0, 0, 0.4), 0 10px 10px -5px rgba(0, 0, 0, 0.3);
+}
+
+/* Ajustes específicos para tema oscuro */
+[data-theme="dark"] .login-screen {
+    background: linear-gradient(135deg, #2d3748 0%, #4a5568 100%);
+}
+
+[data-theme="dark"] .stat-card::before {
+    background: rgba(255, 255, 255, 0.05);
+}
+
+[data-theme="dark"] .calendar-day.today {
+    background-color: rgba(44, 82, 130, 0.3);
+}
+
+[data-theme="dark"] .toast {
+    background-color: var(--bg-secondary);
+    border-left-color: var(--primary-color);
+}
+
+/* ==================== TEMA DE ALTO CONTRASTE ==================== */
+[data-theme="high-contrast"] {
+    /* Colores de alto contraste */
+    --bg-primary: #ffffff;
+    --bg-secondary: #f0f0f0;
+    --bg-tertiary: #e0e0e0;
+    --bg-dark: #000000;
+
+    --text-primary: #000000;
+    --text-secondary: #000000;
+    --text-muted: #333333;
+    --text-light: #666666;
+    --text-white: #ffffff;
+
+    --primary-color: #000080;
+    --secondary-color: #008000;
+    --success-color: #008000;
+    --warning-color: #ff8000;
+    --error-color: #ff0000;
+    --info-color: #0000ff;
+
+    --border-color: #000000;
+    --border-dark: #000000;
+
+    /* Sombras más marcadas */
+    --shadow-sm: 0 2px 4px 0 rgba(0, 0, 0, 0.8);
+    --shadow-md: 0 4px 8px -1px rgba(0, 0, 0, 0.8);
+    --shadow-lg: 0 8px 16px -3px rgba(0, 0, 0, 0.8);
+    --shadow-xl: 0 16px 32px -5px rgba(0, 0, 0, 0.8);
+}
+
+[data-theme="high-contrast"] .btn {
+    border-width: 2px;
+    font-weight: 700;
+}
+
+[data-theme="high-contrast"] .form-control {
+    border-width: 2px;
+}
+
+[data-theme="high-contrast"] .form-control:focus {
+    border-width: 3px;
+    box-shadow: 0 0 0 3px rgba(0, 0, 128, 0.5);
+}
+
+/* ==================== VARIACIONES DE COLOR INSTITUCIONAL ==================== */
+
+/* Variación Salud (Verde) */
+.theme-health {
+    --primary-color: var(--tolima-green);
+    --primary-dark: #2f855a;
+    --primary-light: #48bb78;
+}
+
+.theme-health .stat-card {
+    background: var(--gradient-secondary);
+}
+
+.theme-health .login-screen {
+    background: linear-gradient(135deg, var(--tolima-green) 0%, #48bb78 100%);
+}
+
+/* Variación Administrativa (Dorado) */
+.theme-admin {
+    --primary-color: var(--tolima-gold);
+    --primary-dark: #b7791f;
+    --primary-light: #f6ad55;
+}
+
+.theme-admin .stat-card {
+    background: var(--gradient-accent);
+}
+
+.theme-admin .login-screen {
+    background: linear-gradient(135deg, var(--tolima-gold) 0%, #f6ad55 100%);
+}
+
+/* ==================== TEMAS POR ÁREA ORGANIZACIONAL ==================== */
+
+/* Despacho del Secretario */
+.area-despacho {
+    --primary-color: #702459;
+    --primary-dark: #553c9a;
+    --primary-light: #9f7aea;
+}
+
+/* Dirección Administrativa */
+.area-direccion-administrativa {
+    --primary-color: var(--tolima-gold);
+    --primary-dark: #b7791f;
+    --primary-light: #f6ad55;
+}
+
+/* Dirección de Salud Pública */
+.area-direccion-salud-publica {
+    --primary-color: var(--tolima-green);
+    --primary-dark: #2f855a;
+    --primary-light: #48bb78;
+}
+
+/* Dirección de Aseguramiento */
+.area-direccion-aseguramiento {
+    --primary-color: #3182ce;
+    --primary-dark: #2c5282;
+    --primary-light: #4299e1;
+}
+
+/* Dirección de Prestación */
+.area-direccion-prestacion {
+    --primary-color: #e53e3e;
+    --primary-dark: #c53030;
+    --primary-light: #fc8181;
+}
+
+/* Dirección Jurídica */
+.area-direccion-juridica {
+    --primary-color: #805ad5;
+    --primary-dark: #6b46c1;
+    --primary-light: #9f7aea;
+}
+
+/* Sistemas */
+.area-sistemas {
+    --primary-color: #319795;
+    --primary-dark: #2c7a7b;
+    --primary-light: #4fd1c7;
+}
+
+/* ==================== MODOS DE ACCESIBILIDAD ==================== */
+
+/* Reducir movimiento para usuarios sensibles */
+@media (prefers-reduced-motion: reduce) {
+    :root {
+        --transition-fast: none;
+        --transition-normal: none;
+        --transition-slow: none;
+    }
+
+    .spinner {
+        animation: none;
+    }
+
+    .toast {
+        animation: none;
+    }
+
+    .modal-content {
+        transition: none;
+    }
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+        transition-duration: 0.01ms !important;
+    }
+}
+
+/* Modo dislexia-friendly */
+.dyslexia-friendly {
+    font-family: 'OpenDyslexic', 'Comic Sans MS', cursive;
+    letter-spacing: 0.1em;
+    line-height: 1.8;
+}
+
+.dyslexia-friendly p,
+.dyslexia-friendly div,
+.dyslexia-friendly span {
+    word-spacing: 0.3em;
+}
+
+/* ==================== TEMAS ESTACIONALES ==================== */
+
+/* Tema Navideño */
+.theme-christmas {
+    --primary-color: #c53030;
+    --secondary-color: #38a169;
+    --accent-color: #d69e2e;
+}
+
+.theme-christmas .header {
+    background: linear-gradient(45deg, #c53030, #38a169);
+}
+
+.theme-christmas .stat-card {
+    background: linear-gradient(135deg, #c53030 0%, #38a169 100%);
+}
+
+/* Tema Día de la Independencia */
+.theme-independence {
+    --primary-color: #3182ce;
+    --secondary-color: #d69e2e;
+    --accent-color: #c53030;
+}
+
+/* ==================== PERSONALIZACIÓN POR USUARIO ==================== */
+
+/* Preferencias de tamaño de fuente */
+.font-size-small {
+    font-size: 14px;
+}
+
+.font-size-normal {
+    font-size: 16px;
+}
+
+.font-size-large {
+    font-size: 18px;
+}
+
+.font-size-extra-large {
+    font-size: 20px;
+}
+
+/* Ajustar otros elementos según el tamaño de fuente */
+.font-size-large .btn,
+.font-size-extra-large .btn {
+    padding: calc(var(--spacing-sm) * 1.2) calc(var(--spacing-md) * 1.2);
+}
+
+.font-size-large .form-control,
+.font-size-extra-large .form-control {
+    padding: calc(var(--spacing-sm) * 1.2) calc(var(--spacing-md) * 1.2);
+}
+
+/* ==================== MODO IMPRESIÓN MEJORADO ==================== */
+@media print {
+
+    /* Forzar colores para impresión */
+    .theme-print {
+        --bg-primary: white !important;
+        --bg-secondary: white !important;
+        --text-primary: black !important;
+        --text-secondary: black !important;
+        --border-color: black !important;
+    }
+
+    /* Optimizar para impresión en blanco y negro */
+    .priority-alta,
+    .priority-urgente {
+        background-color: #cccccc !important;
+        color: black !important;
+    }
+
+    .badge {
+        border: 1px solid black !important;
+        background-color: white !important;
+        color: black !important;
+    }
+}
+
+/* ==================== MODO PRESENTACIÓN ==================== */
+.presentation-mode {
+    font-size: 120%;
+}
+
+.presentation-mode .header {
+    padding: var(--spacing-xl);
+}
+
+.presentation-mode .main-content {
+    padding: var(--spacing-2xl);
+}
+
+.presentation-mode .card {
+    padding: var(--spacing-xl);
+    margin-bottom: var(--spacing-xl);
+}
+
+.presentation-mode .btn {
+    padding: var(--spacing-md) var(--spacing-xl);
+    font-size: var(--font-size-lg);
+}
+
+/* ==================== UTILIDADES DE TEMA ==================== */
+
+/* Aplicar tema según preferencias del sistema */
+@media (prefers-color-scheme: dark) {
+    :root:not([data-theme]) {
+        /* Aplicar tema oscuro si no hay tema específico */
+        --bg-primary: #1a202c;
+        --bg-secondary: #2d3748;
+        --bg-tertiary: #4a5568;
+        --text-primary: #f7fafc;
+        --text-secondary: #e2e8f0;
+        --text-muted: #a0aec0;
+        --border-color: #4a5568;
+    }
+}
+
+/* Clases para cambio dinámico de tema */
+.theme-transition,
+.theme-transition * {
+    transition: background-color 0.3s ease, color 0.3s ease, border-color 0.3s ease !important;
+}
+
+/* Indicador de tema activo */
+.theme-indicator {
+    position: fixed;
+    top: var(--spacing-sm);
+    left: var(--spacing-sm);
+    z-index: 9999;
+    background: var(--primary-color);
+    color: var(--text-white);
+    padding: var(--spacing-xs) var(--spacing-sm);
+    border-radius: var(--border-radius-sm);
+    font-size: var(--font-size-xs);
+    opacity: 0.8;
+    pointer-events: none;
+}
+
+/* Ocultar indicador en producción */
+.production .theme-indicator {
+    display: none;
+}
+
+/* ==================== VARIABLES PERSONALIZABLES ==================== */
+
+/* Los usuarios pueden personalizar estas variables */
+:root {
+    /* Espaciado personalizable */
+    --user-spacing-multiplier: 1;
+    --custom-border-radius: var(--border-radius-md);
+
+    /* Colores personalizables */
+    --user-accent-color: var(--primary-color);
+    --user-background-color: var(--bg-primary);
+
+    /* Tipografía personalizable */
+    --user-font-family: var(--font-family-base);
+    --user-font-size-multiplier: 1;
+}
+
+/* Aplicar personalizaciones */
+.user-customized {
+    --spacing-xs: calc(0.25rem * var(--user-spacing-multiplier));
+    --spacing-sm: calc(0.5rem * var(--user-spacing-multiplier));
+    --spacing-md: calc(1rem * var(--user-spacing-multiplier));
+    --spacing-lg: calc(1.5rem * var(--user-spacing-multiplier));
+    --spacing-xl: calc(2rem * var(--user-spacing-multiplier));
+
+    --border-radius-sm: var(--custom-border-radius);
+    --border-radius-md: var(--custom-border-radius);
+    --border-radius-lg: var(--custom-border-radius);
+
+    font-family: var(--user-font-family);
+    font-size: calc(1rem * var(--user-font-size-multiplier));
+}
+
+/* ==================== ANIMACIONES DE TEMA ==================== */
+
+/* Transición suave entre temas */
+.theme-switching {
+    transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Animación de carga de tema */
+@keyframes themeLoad {
+    0% {
+        opacity: 0;
+        transform: scale(0.95);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+.theme-loaded {
+    animation: themeLoad 0.3s ease-out;
+}
+
+/* ==================== DETECTAR SOPORTE DE CARACTERÍSTICAS ==================== */
+
+/* Fallback para navegadores sin soporte CSS Grid */
+@supports not (display: grid) {
+
+    .dashboard-grid,
+    .form-row,
+    .calendar-grid {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .dashboard-grid>*,
+    .form-row>*,
+    .calendar-grid>* {
+        flex: 1 1 280px;
+        margin: var(--spacing-sm);
+    }
+}
+
+/* Fallback para navegadores sin variables CSS */
+@supports not (--css: variables) {
+    :root {
+        background-color: #f7fafc;
+        color: #2d3748;
+    }
+
+    .btn-primary {
+        background-color: #2c5282;
+        color: white;
+    }
+
+    .btn-secondary {
+        background-color: #38a169;
+        color: white;
+    }
+}

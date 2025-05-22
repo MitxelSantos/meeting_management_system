@@ -1,0 +1,825 @@
+/**
+ * Estilos responsivos del Sistema de Gestión de Reuniones
+ * @author Secretaría de Salud del Tolima
+ * @version 1.0.0
+ */
+
+/* ==================== BREAKPOINTS ==================== */
+/* 
+  xs: 0-575px (móviles pequeños)
+  sm: 576-767px (móviles grandes)
+  md: 768-991px (tablets)
+  lg: 992-1199px (escritorio pequeño)
+  xl: 1200px+ (escritorio grande)
+*/
+
+/* ==================== PANTALLAS EXTRA GRANDES (1200px+) ==================== */
+@media (min-width: 1200px) {
+    .header-content {
+        max-width: 1400px;
+    }
+
+    .main-content {
+        max-width: 1400px;
+    }
+
+    .dashboard-grid {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .form-row.four-columns {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+/* ==================== PANTALLAS GRANDES (992px - 1199px) ==================== */
+@media (max-width: 1199px) {
+    .header-content {
+        padding: var(--spacing-md);
+    }
+
+    .main-content {
+        padding: var(--spacing-lg) var(--spacing-md);
+    }
+
+    .dashboard-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    .actions-grid {
+        grid-template-columns: repeat(3, 1fr);
+    }
+}
+
+/* ==================== PANTALLAS MEDIANAS (768px - 991px) ==================== */
+@media (max-width: 991px) {
+
+    /* Header */
+    .header-content {
+        flex-direction: column;
+        gap: var(--spacing-md);
+    }
+
+    .logo-section {
+        width: 100%;
+        justify-content: center;
+    }
+
+    .user-info {
+        width: 100%;
+        justify-content: space-between;
+    }
+
+    .nav-menu {
+        width: 100%;
+        justify-content: center;
+        flex-wrap: wrap;
+    }
+
+    /* Dashboard */
+    .dashboard-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    .dashboard-row {
+        flex-direction: column;
+    }
+
+    .dashboard-col {
+        width: 100%;
+        margin-bottom: var(--spacing-lg);
+    }
+
+    .actions-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Formularios */
+    .form-row.two-columns,
+    .form-row.three-columns,
+    .form-row.four-columns {
+        grid-template-columns: 1fr;
+    }
+
+    .meeting-form-container {
+        padding: var(--spacing-lg);
+    }
+
+    /* Calendario */
+    .calendar-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        text-align: center;
+    }
+
+    .calendar-nav {
+        justify-content: center;
+    }
+
+    .calendar-day {
+        min-height: 80px;
+        padding: var(--spacing-xs);
+    }
+
+    .calendar-day-number {
+        font-size: var(--font-size-xs);
+    }
+
+    .calendar-event {
+        font-size: 10px;
+        padding: 1px var(--spacing-xs);
+    }
+
+    /* Reuniones */
+    .meeting-info {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-sm);
+    }
+
+    .meeting-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    .meeting-actions {
+        align-self: flex-end;
+    }
+
+    /* Filtros */
+    .filters-content {
+        grid-template-columns: repeat(2, 1fr);
+    }
+
+    /* Reportes */
+    .chart-container {
+        height: 300px;
+    }
+
+    .report-header {
+        flex-direction: column;
+        gap: var(--spacing-md);
+        align-items: flex-start;
+    }
+}
+
+/* ==================== PANTALLAS PEQUEÑAS (576px - 767px) ==================== */
+@media (max-width: 767px) {
+
+    /* Variables responsivas */
+    :root {
+        --spacing-lg: 1rem;
+        --spacing-xl: 1.5rem;
+        --spacing-2xl: 2rem;
+    }
+
+    /* Layout general */
+    .main-content {
+        padding: var(--spacing-md);
+    }
+
+    /* Header */
+    .logo {
+        height: 40px;
+    }
+
+    .institution-info h1 {
+        font-size: var(--font-size-base);
+    }
+
+    .institution-info p {
+        font-size: var(--font-size-xs);
+    }
+
+    .user-details {
+        text-align: left;
+    }
+
+    .user-name {
+        font-size: var(--font-size-xs);
+    }
+
+    .user-area {
+        font-size: 10px;
+    }
+
+    /* Navegación */
+    .nav-menu {
+        overflow-x: auto;
+        scrollbar-width: thin;
+        padding-bottom: var(--spacing-xs);
+    }
+
+    .nav-item {
+        white-space: nowrap;
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-xs);
+    }
+
+    /* Dashboard */
+    .dashboard-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .stat-card {
+        padding: var(--spacing-md);
+    }
+
+    .stat-card-value {
+        font-size: var(--font-size-2xl);
+    }
+
+    .actions-grid {
+        grid-template-columns: 1fr;
+        gap: var(--spacing-md);
+    }
+
+    .action-card {
+        padding: var(--spacing-md);
+    }
+
+    /* Login */
+    .login-container {
+        padding: var(--spacing-lg);
+        margin: var(--spacing-md);
+    }
+
+    .login-logo {
+        height: 60px;
+    }
+
+    .login-header h1 {
+        font-size: var(--font-size-xl);
+    }
+
+    /* Formularios */
+    .meeting-form-container {
+        padding: var(--spacing-md);
+    }
+
+    .form-section-title {
+        font-size: var(--font-size-base);
+    }
+
+    .form-control {
+        padding: var(--spacing-sm);
+    }
+
+    .btn {
+        padding: var(--spacing-sm);
+        font-size: var(--font-size-xs);
+    }
+
+    .btn-lg {
+        padding: var(--spacing-sm) var(--spacing-md);
+        font-size: var(--font-size-sm);
+    }
+
+    /* Reuniones */
+    .meeting-item {
+        padding: var(--spacing-md);
+    }
+
+    .meeting-title {
+        font-size: var(--font-size-base);
+    }
+
+    .meeting-info-item {
+        font-size: var(--font-size-xs);
+    }
+
+    .meeting-item-compact {
+        padding: var(--spacing-sm);
+    }
+
+    .meeting-time {
+        font-size: var(--font-size-xs);
+    }
+
+    /* Modales */
+    .modal-content {
+        margin: var(--spacing-md);
+        max-height: calc(100vh - 2rem);
+    }
+
+    .modal-header,
+    .modal-body,
+    .modal-footer {
+        padding: var(--spacing-md);
+    }
+
+    .modal-footer {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .modal-footer .btn {
+        width: 100%;
+    }
+
+    /* Calendario */
+    .calendar-day {
+        min-height: 60px;
+        font-size: var(--font-size-xs);
+    }
+
+    .calendar-day-header {
+        padding: var(--spacing-sm);
+        font-size: 10px;
+    }
+
+    .calendar-event {
+        display: none;
+        /* Ocultar eventos en móviles muy pequeños */
+    }
+
+    .calendar-day.has-events::after {
+        content: '•';
+        position: absolute;
+        bottom: 2px;
+        right: 2px;
+        color: var(--primary-color);
+        font-size: var(--font-size-lg);
+    }
+
+    /* Filtros */
+    .filters-content {
+        grid-template-columns: 1fr;
+    }
+
+    .filters-header {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-sm);
+    }
+
+    /* Tablas */
+    .table-responsive {
+        overflow-x: auto;
+    }
+
+    .table th,
+    .table td {
+        padding: var(--spacing-xs) var(--spacing-sm);
+        font-size: var(--font-size-xs);
+    }
+
+    /* Toasts */
+    .toast-container {
+        top: var(--spacing-sm);
+        right: var(--spacing-sm);
+        left: var(--spacing-sm);
+    }
+
+    .toast {
+        min-width: auto;
+        max-width: none;
+    }
+
+    /* Charts */
+    .chart-container {
+        height: 250px;
+    }
+
+    .chart-legend {
+        flex-direction: column;
+        align-items: flex-start;
+        gap: var(--spacing-xs);
+    }
+
+    /* Empty states */
+    .empty-state-icon {
+        font-size: 3rem;
+    }
+
+    .empty-state-title {
+        font-size: var(--font-size-base);
+    }
+}
+
+/* ==================== PANTALLAS MUY PEQUEÑAS (575px-) ==================== */
+@media (max-width: 575px) {
+
+    /* Layout */
+    .main-content {
+        padding: var(--spacing-sm);
+    }
+
+    /* Header */
+    .header-content {
+        padding: var(--spacing-sm);
+    }
+
+    .logo-section {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+        text-align: center;
+    }
+
+    .institution-info h1 {
+        font-size: var(--font-size-sm);
+        margin-bottom: var(--spacing-xs);
+    }
+
+    .user-info {
+        flex-direction: column;
+        gap: var(--spacing-sm);
+    }
+
+    .user-actions {
+        justify-content: center;
+    }
+
+    /* Login */
+    .login-container {
+        padding: var(--spacing-md);
+        margin: var(--spacing-sm);
+    }
+
+    .login-logo {
+        height: 50px;
+    }
+
+    .login-header h1 {
+        font-size: var(--font-size-lg);
+    }
+
+    /* Dashboard */
+    .dashboard-header {
+        text-align: center;
+    }
+
+    .stat-card {
+        text-align: center;
+    }
+
+    .stat-card-header {
+        justify-content: center;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    /* Navigation hamburger style */
+    .nav-menu {
+        position: relative;
+    }
+
+    .nav-toggle {
+        display: block;
+        background: none;
+        border: none;
+        color: var(--primary-color);
+        font-size: var(--font-size-lg);
+        cursor: pointer;
+        padding: var(--spacing-sm);
+    }
+
+    .nav-menu.collapsed .nav-item:not(.nav-toggle) {
+        display: none;
+    }
+
+    .nav-menu.expanded {
+        position: absolute;
+        top: 100%;
+        left: 0;
+        right: 0;
+        background-color: var(--bg-primary);
+        border: 1px solid var(--border-color);
+        border-radius: var(--border-radius-md);
+        box-shadow: var(--shadow-lg);
+        z-index: 1000;
+        flex-direction: column;
+        padding: var(--spacing-sm);
+    }
+
+    .nav-menu.expanded .nav-item {
+        width: 100%;
+        justify-content: flex-start;
+        margin-bottom: var(--spacing-xs);
+    }
+
+    /* Forms */
+    .btn-group {
+        flex-direction: column;
+    }
+
+    .btn-group .btn {
+        margin-bottom: var(--spacing-xs);
+    }
+
+    /* Meeting items */
+    .meeting-header {
+        text-align: center;
+    }
+
+    .meeting-actions {
+        align-self: center;
+        margin-top: var(--spacing-sm);
+    }
+
+    /* Calendar responsive table view */
+    .calendar-mobile {
+        display: block;
+    }
+
+    .calendar-desktop {
+        display: none;
+    }
+
+    .calendar-day-mobile {
+        border-bottom: 1px solid var(--border-color);
+        padding: var(--spacing-md);
+    }
+
+    .calendar-day-mobile .date {
+        font-weight: 600;
+        margin-bottom: var(--spacing-sm);
+    }
+
+    .calendar-day-mobile .events {
+        display: flex;
+        flex-direction: column;
+        gap: var(--spacing-xs);
+    }
+
+    /* Stats */
+    .stats-item {
+        flex-direction: column;
+        text-align: center;
+        gap: var(--spacing-xs);
+    }
+
+    .stats-bar {
+        order: 1;
+    }
+
+    .stats-label {
+        order: 0;
+    }
+
+    .stats-value {
+        order: 2;
+    }
+}
+
+/* ==================== MODO PAISAJE EN MÓVILES ==================== */
+@media (max-height: 500px) and (orientation: landscape) {
+    .login-screen {
+        padding: var(--spacing-md) var(--spacing-lg);
+    }
+
+    .login-container {
+        margin: 0;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
+    .login-logo {
+        height: 40px;
+    }
+
+    .login-header {
+        margin-bottom: var(--spacing-md);
+    }
+
+    .modal-content {
+        max-height: 90vh;
+    }
+}
+
+/* ==================== PRINT STYLES ==================== */
+@media print {
+
+    /* Ocultar elementos no necesarios */
+    .header,
+    .nav-menu,
+    .user-actions,
+    .btn,
+    .modal,
+    .toast-container,
+    .loading-spinner {
+        display: none !important;
+    }
+
+    /* Estilos para impresión */
+    body {
+        background: white !important;
+        color: black !important;
+        font-size: 12pt;
+        line-height: 1.4;
+    }
+
+    .main-content {
+        padding: 0;
+        max-width: none;
+    }
+
+    .card {
+        border: 1px solid #000;
+        box-shadow: none;
+        margin-bottom: 1rem;
+        page-break-inside: avoid;
+    }
+
+    .meeting-item {
+        border: 1px solid #000;
+        margin-bottom: 0.5rem;
+        page-break-inside: avoid;
+    }
+
+    h1,
+    h2,
+    h3 {
+        page-break-after: avoid;
+    }
+
+    .chart-container {
+        display: none;
+        /* Los gráficos no se imprimen bien */
+    }
+}
+
+/* ==================== UTILIDADES RESPONSIVAS ==================== */
+
+/* Mostrar/ocultar según tamaño de pantalla */
+.d-xs-none {
+    display: none !important;
+}
+
+.d-sm-none {
+    display: none !important;
+}
+
+.d-md-none {
+    display: none !important;
+}
+
+.d-lg-none {
+    display: none !important;
+}
+
+.d-xl-none {
+    display: none !important;
+}
+
+@media (min-width: 576px) {
+    .d-xs-none {
+        display: revert !important;
+    }
+
+    .d-sm-block {
+        display: block !important;
+    }
+
+    .d-sm-flex {
+        display: flex !important;
+    }
+
+    .d-sm-inline {
+        display: inline !important;
+    }
+}
+
+@media (min-width: 768px) {
+    .d-sm-none {
+        display: revert !important;
+    }
+
+    .d-md-block {
+        display: block !important;
+    }
+
+    .d-md-flex {
+        display: flex !important;
+    }
+
+    .d-md-inline {
+        display: inline !important;
+    }
+}
+
+@media (min-width: 992px) {
+    .d-md-none {
+        display: revert !important;
+    }
+
+    .d-lg-block {
+        display: block !important;
+    }
+
+    .d-lg-flex {
+        display: flex !important;
+    }
+
+    .d-lg-inline {
+        display: inline !important;
+    }
+}
+
+@media (min-width: 1200px) {
+    .d-lg-none {
+        display: revert !important;
+    }
+
+    .d-xl-block {
+        display: block !important;
+    }
+
+    .d-xl-flex {
+        display: flex !important;
+    }
+
+    .d-xl-inline {
+        display: inline !important;
+    }
+}
+
+/* Texto responsivo */
+@media (max-width: 767px) {
+    .text-sm-center {
+        text-align: center !important;
+    }
+
+    .text-sm-left {
+        text-align: left !important;
+    }
+
+    .text-sm-right {
+        text-align: right !important;
+    }
+}
+
+/* Márgenes y padding responsivos */
+@media (max-width: 767px) {
+    .p-sm {
+        padding: var(--spacing-sm) !important;
+    }
+
+    .m-sm {
+        margin: var(--spacing-sm) !important;
+    }
+
+    .px-sm {
+        padding-left: var(--spacing-sm) !important;
+        padding-right: var(--spacing-sm) !important;
+    }
+
+    .py-sm {
+        padding-top: var(--spacing-sm) !important;
+        padding-bottom: var(--spacing-sm) !important;
+    }
+}
+
+/* Ancho responsivo */
+.w-sm-100 {
+    width: 100% !important;
+}
+
+@media (max-width: 767px) {
+    .w-sm-100 {
+        width: 100% !important;
+    }
+
+    .w-sm-auto {
+        width: auto !important;
+    }
+}
+
+/* Contenedores responsivos */
+.container-fluid {
+    width: 100%;
+    padding-right: var(--spacing-md);
+    padding-left: var(--spacing-md);
+}
+
+.container {
+    width: 100%;
+    padding-right: var(--spacing-md);
+    padding-left: var(--spacing-md);
+    margin-right: auto;
+    margin-left: auto;
+}
+
+@media (min-width: 576px) {
+    .container {
+        max-width: 540px;
+    }
+}
+
+@media (min-width: 768px) {
+    .container {
+        max-width: 720px;
+    }
+}
+
+@media (min-width: 992px) {
+    .container {
+        max-width: 960px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .container {
+        max-width: 1140px;
+    }
+}
