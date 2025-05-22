@@ -358,9 +358,9 @@ Usar el [sistema de issues](https://github.com/saludtolima/meeting-management-sy
 ## 📞 Soporte
 
 ### Contacto Técnico
-- **Email**: sistemas@saludtolima.gov.co
-- **Teléfono**: +57 (8) 123-4567
-- **Horario**: Lunes a Viernes, 8:00 AM - 5:00 PM
+- **Email**: proyectosSST@outlook.com
+- **Teléfono**: +57 304 652 4356
+- **Horario**: Lunes a Viernes, 8:00 AM - 4:00 PM
 
 ### Enlaces Útiles
 - [Manual de Usuario](docs/user-manual.pdf)
